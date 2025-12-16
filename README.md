@@ -12,6 +12,12 @@ This project is ideal for students, self-learners, and developers looking for a 
 
 ---
 
+## 🌐 Live Demo
+
+**Try it now:** [https://balanquit-kendrick.github.io/LTO-Reviewer/](https://balanquit-kendrick.github.io/LTO-Reviewer/)
+
+---
+
 ## ✨ Features
 
 - 📋 **Randomized Exam Questions**  
