@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LTO Driving Licensure Examination Practice Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚗 LTO Driving Licensure Examination</h1>
+        <p>Practice Test for the Philippines</p>
+      </div>
+
+      <div class="exam-container">
+        <!-- Start Screen -->
+        <div id="startScreen" class="start-screen">
+          <h2>Welcome to the LTO Practice Test</h2>
+          <p><strong>Instructions:</strong></p>
+          <p>• You will answer 60 randomly selected questions</p>
+          <p>• You have 45 minutes to complete the examination</p>
+          <p>• Each question may have single or multiple correct answers</p>
+          <p>• You must answer each question before proceeding</p>
+          <p>• Use Next/Previous buttons to navigate</p>
+          <p>• The exam will auto-submit when time expires</p>
+          <p>• Click Submit on the final question to see your results</p>
+          <button id="startBtn" class="btn btn-success">
+            Start Examination
+          </button>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading" style="display: none">
+          <p>Loading questions...</p>
+        </div>
+
+        <!-- Question Container -->
+        <div id="questionContainer" class="question-container">
+          <div class="question-header">
+            <div class="header-top">
+              <div class="question-number">
+                Question <span id="currentQuestionNum">1</span> of
+                <span id="totalQuestions">60</span>
+              </div>
+              <div class="timer">
+                Time Remaining: <span id="timerDisplay">45:00</span>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div id="questionText" class="question-text"></div>
+
+          <div id="optionsContainer" class="options-container"></div>
+
+          <div id="answerWarning" class="warning" style="display: none">
+            Please select an answer before proceeding.
+          </div>
+
+          <div class="navigation">
+            <div class="nav-left">
+              <button id="prevBtn" class="btn" disabled>Previous</button>
+            </div>
+            <div class="nav-right">
+              <button id="nextBtn" class="btn">Next</button>
+              <button
+                id="submitBtn"
+                class="btn btn-success"
+                style="display: none"
+              >
+                Submit Exam
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" class="results-container">
+          <h2>Examination Results</h2>
+          <div id="scoreDisplay" class="score-display"></div>
+          <div
+            id="resultStatus"
+            style="font-size: 1.2rem; margin-bottom: 20px"
+          ></div>
+
+          <div class="result-details">
+            <p>
+              <strong>Correct Answers:</strong> <span id="correctCount"></span>
+            </p>
+            <p><strong>Wrong Answers:</strong> <span id="wrongCount"></span></p>
+            <p>
+              <strong>Total Questions:</strong> <span id="totalCount">60</span>
+            </p>
+          </div>
+
+          <div class="results-actions">
+            <button id="reviewBtn" class="btn btn-primary">Review Exam</button>
+            <button id="retakeBtn" class="btn">
+              Take Another Practice Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Review Container -->
+        <div
+          id="reviewContainer"
+          class="review-container"
+          style="display: none"
+        >
+          <div class="review-header">
+            <h2>Review Your Answers</h2>
+            <div class="review-navigation">
+              <button id="backToResultsBtn" class="btn">Back to Results</button>
+            </div>
+          </div>
+
+          <div class="review-question-header">
+            <div class="review-question-number">
+              Question <span id="reviewCurrentQuestionNum">1</span> of
+              <span id="reviewTotalQuestions">60</span>
+            </div>
+            <div class="review-progress-bar">
+              <div id="reviewProgressFill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div id="reviewQuestionText" class="review-question-text"></div>
+
+          <div
+            id="reviewOptionsContainer"
+            class="review-options-container"
+          ></div>
+
+          <div class="review-answer-status">
+            <div id="reviewAnswerResult" class="review-result"></div>
+          </div>
+
+          <div class="review-navigation-bottom">
+            <button id="reviewPrevBtn" class="btn" disabled>Previous</button>
+            <button id="reviewNextBtn" class="btn">Next</button>
+          </div>
+        </div>
+
+        <!-- Error Container -->
+        <div id="errorContainer" class="error" style="display: none">
+          <p>
+            Error loading questions. Please make sure the question.json file is
+            available.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

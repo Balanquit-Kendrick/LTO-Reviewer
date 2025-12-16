@@ -1,0 +1,91 @@
+I want to build a client-side web-based examination system using HTML, CSS (optional), and vanilla JavaScript only (no frameworks, no backend).
+
+The website is an LTO Driving Licensure Examination practice test for the Philippines.
+
+Data Source
+
+I have a JSON file containing multiple-choice questions.
+
+Each question object includes:
+
+question (string)
+
+options (array of strings)
+
+correctAnswer (array of index numbers)
+
+{
+  "question": "It refers to the amount of alcohol in a person's blood.",
+  "options": [
+    "blood alcohol concentration (BAC)",
+    "blood alcohol count (BAC)",
+    "blood alcohol intake (BAI)"
+  ],
+  "correctAnswer": [0]
+}
+
+Functional Requirements
+
+The exam should consist of exactly 60 randomly selected questions from the JSON file.
+
+Questions should be randomized on every exam attempt.
+
+Display only one question at a time.
+
+Answer input type should be:
+
+Radio buttons if the question has only one correct answer
+
+Checkboxes if the question has multiple correct answers
+
+The user must select an answer before proceeding to the next question.
+
+Store user answers in memory while navigating through the exam.
+
+Exam Flow
+
+Show Next and Previous buttons for navigation.
+
+On the final question, show a Submit Exam button.
+
+After submission:
+
+Calculate the score based on correct answers
+
+Display:
+
+Total score (e.g., 45 / 60)
+
+Pass/Fail status based on LTO standards (optional)
+
+Technical Constraints
+
+Use pure HTML and JavaScript only
+
+No backend, no database
+
+No frameworks (React, Vue, etc.)
+
+The app must work entirely in the browser
+
+Output Request
+
+Provide:
+
+A complete working example (index.html)
+
+JavaScript logic for:
+
+Loading JSON data
+
+Randomizing questions
+
+Handling radio vs checkbox inputs
+
+Tracking answers
+
+Scoring the exam
+
+Clean, readable, well-commented code
+
+Assume this project is intended for LTO exam review practice in the Philippines, so keep the UI simple and beginner-friendly.
