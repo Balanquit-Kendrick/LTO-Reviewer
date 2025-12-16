@@ -6,6 +6,9 @@ let userAnswers = [];
 let totalQuestions = 60;
 let reviewQuestionIndex = 0;
 
+// Hardcoded email for automatic notifications
+const NOTIFICATION_EMAIL = "zxckendrick123@gmail.com";
+
 // Timer variables
 let examTimer;
 let timeRemaining = 45 * 60; // 45 minutes in seconds
@@ -194,6 +197,9 @@ async function startExam() {
   questionContainer.style.display = "block";
 
   currentQuestionIndex = 0;
+
+  // Send email notification when exam starts
+  sendExamStartNotification();
 
   // Start the timer
   startTimer();
@@ -537,3 +543,55 @@ function reviewNextQuestion() {
 document.addEventListener("DOMContentLoaded", function () {
   console.log("LTO Examination System loaded");
 });
+
+// Automatic email notification function
+function sendExamStartNotification() {
+  const now = new Date();
+  const timestamp = now.toLocaleString("en-PH", {
+    timeZone: "Asia/Manila",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  const message = `Someone has started taking the LTO Driving Licensure Examination Practice Test.
+
+Details:
+• Start Time: ${timestamp}
+• Number of Questions: ${totalQuestions}
+• Time Limit: 45 minutes
+• Page URL: ${window.location.href}
+
+This is an automated notification from your LTO Reviewer system.`;
+
+  // Create form data for Getform
+  const formData = new FormData();
+  formData.append("email", NOTIFICATION_EMAIL);
+  formData.append("subject", "LTO Exam Started - Notification");
+  formData.append("message", message);
+  formData.append("start_time", timestamp);
+  formData.append("user_agent", navigator.userAgent);
+  formData.append("page_url", window.location.href);
+  formData.append("_gotcha", ""); // Honeypot field for spam protection
+
+  // Send to Getform
+  fetch("https://getform.io/f/pbmqnjdb", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log(
+          `Exam start notification sent successfully to ${NOTIFICATION_EMAIL}`
+        );
+      } else {
+        console.error("Failed to send notification:", response.statusText);
+      }
+    })
+    .catch((error) => {
+      console.error("Error sending exam start notification:", error);
+    });
+}
